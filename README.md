@@ -14,11 +14,20 @@ So its features are limited and it is not efficient, making it really only usefu
 
 ## Using
 
-`gflib.ts` can be transpiled to JavaScript by running `tsc` in this folder (of course you need TypeScript installed).
-It has no module dependencies.
-You can then include the generated `js/gflib.js` file in your application as usual.
+Your GF grammar should be compiled into JSON with: `gf --make --output-format=json`.
+This requires a version of GF *later than* the 3.10 release.
 
-_This generated JavaScript version is also included under version control,
-to make it easy for someone to use without having to install TypeScript._
+### TypeScript + Node
 
-Your GF grammar should be compiled with: `gf --make --output-format=js`
+```ts
+import { fromJSON, GFGrammar } from 'gf-typescript'
+import { readFileSync } from 'fs'
+
+let json = JSON.parse(readFileSync('./test/grammars/Zero.json').toString())
+let grammar: GFGrammar | null = fromJSON(json)
+```
+
+### Browser
+
+**Coming soon**
+

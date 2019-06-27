@@ -5,12 +5,8 @@ concrete ZeroEng of Zero = {
   lin
     eat n = { s = "eat" ++ artIndef ++ n.s } ;
 
-    -- useMassN n = n ;
-    -- anyN s = s ;
-
     apple = { s = "apple" } ;
-    pår = { s = "pear" } ;
-    -- water = { s = "water" };
+    banana = { s = "banana" } ;
 
   oper
     -- artIndef : Str = pre {"a" ; "an" / strs {"a" ; "e" ; "i" ; "o"}} ;

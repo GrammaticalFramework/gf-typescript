@@ -1,7 +1,43 @@
 /**
+ * Module exports
+ */
+export {
+  GFGrammar,
+  GFAbstract,
+  GFConcrete,
+  Fun,
+  Type,
+  Apply,
+  Coerce,
+  PArg,
+  Const,
+  CncFun,
+  SymCat,
+  SymKS,
+  SymKP,
+  SymLit,
+  Alt,
+}
+
+import './gf-json'
+
+/**
+ * Convert from GF's JSON format into GFGrammar object
+ */
+export function fromJSON (json: GFJSON): GFGrammar | null {
+  let types: {[key: string]: Type} = {}
+  json.abstract.funs.forEach((f): void => {
+    types[f.fun] = new Type(f.type['.args'], f.type['.result'])
+  })
+  let abs = new GFAbstract(json.abstract.flags.startcat, types)
+  let cncs = {} // TODO
+  return new GFGrammar(abs, cncs)
+}
+
+/**
  * A GF grammar is one abstract and multiple concretes
  */
-class GFGrammar { // eslint-disable-line @typescript-eslint/no-unused-vars
+class GFGrammar {
   public abstract: GFAbstract
   public concretes: {[key: string]: GFConcrete}
 
@@ -1526,25 +1562,3 @@ function isUndefined(a: any): boolean { // eslint-disable-line @typescript-eslin
 // function isFunction(a: any): boolean {
 //   return typeof a == 'function'
 // }
-
-/**
- * Module exports
- */
-
-export {
-  GFGrammar,
-  GFAbstract,
-  GFConcrete,
-  Fun,
-  Type,
-  Apply,
-  Coerce,
-  PArg,
-  Const,
-  CncFun,
-  SymCat,
-  SymKS,
-  SymKP,
-  SymLit,
-  Alt,
-}

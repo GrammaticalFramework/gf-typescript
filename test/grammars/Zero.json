@@ -1,0 +1,136 @@
+{
+  "abstract": {
+    "abs": "Zero",
+    "flags": {
+      "startcat": "Utt"
+    },
+    "cats": ["N", "Utt"],
+    "funs": [{
+      "fun": "apple",
+      "type": {
+        ".args": [],
+        ".result": "N"
+      }
+    }, {
+      "fun": "banana",
+      "type": {
+        ".args": [],
+        ".result": "N"
+      }
+    }, {
+      "fun": "eat",
+      "type": {
+        ".args": ["N"],
+        ".result": "Utt"
+      }
+    }]
+  },
+  "concretes": [{
+    "cnc": "ZeroSwe",
+    "abs": "Zero",
+    "flags": {},
+    "params": [{
+      "param": "ZeroSwe.Gender",
+      "values": ["ZeroSwe.Utrum", "ZeroSwe.Neutrum"]
+    }],
+    "lincats": [{
+      "cat": "N",
+      "lintype": {
+        "s": "Str",
+        "g": "ZeroSwe.Gender"
+      }
+    }, {
+      "cat": "Utt",
+      "lintype": {
+        "s": "Str"
+      }
+    }],
+    "lins": [{
+      "fun": "apple",
+      "args": [],
+      "lin": {
+        "s": "äpple",
+        "g": {
+          ".param": "ZeroSwe.Neutrum"
+        }
+      }
+    }, {
+      "fun": "banana",
+      "args": [],
+      "lin": {
+        "s": "banan",
+        "g": {
+          ".param": "ZeroSwe.Utrum"
+        }
+      }
+    }, {
+      "fun": "eat",
+      "args": ["N_0"],
+      "lin": {
+        "s": ["äta", {
+          ".select": {
+            ".tblarg": "ZeroSwe.Gender",
+            ".tblrows": [{
+              ".pattern": "ZeroSwe.Utrum",
+              ".value": "en"
+            }, {
+              ".pattern": "ZeroSwe.Neutrum",
+              ".value": "ett"
+            }]
+          },
+          ".key": {
+            ".project": {
+              ".var": "N_0"
+            },
+            ".label": "g"
+          }
+        }, {
+          ".project": {
+            ".var": "N_0"
+          },
+          ".label": "s"
+        }]
+      }
+    }]
+  }, {
+    "cnc": "ZeroEng",
+    "abs": "Zero",
+    "flags": {},
+    "params": [],
+    "lincats": [{
+      "cat": "N",
+      "lintype": {
+        "s": "Str"
+      }
+    }, {
+      "cat": "Utt",
+      "lintype": {
+        "s": "Str"
+      }
+    }],
+    "lins": [{
+      "fun": "apple",
+      "args": [],
+      "lin": {
+        "s": "apple"
+      }
+    }, {
+      "fun": "banana",
+      "args": [],
+      "lin": {
+        "s": "banana"
+      }
+    }, {
+      "fun": "eat",
+      "args": ["N_0"],
+      "lin": {
+        "s": ["eat", "a", {
+          ".project": {
+            ".var": "N_0"
+          },
+          ".label": "s"
+        }]
+      }
+    }]
+  }]
+}
