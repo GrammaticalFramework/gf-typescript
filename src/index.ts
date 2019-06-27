@@ -19,8 +19,6 @@ export {
   Alt,
 }
 
-import './gf-json'
-
 /**
  * Convert from GF's JSON format into GFGrammar object
  */

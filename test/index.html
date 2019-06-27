@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="module">
+    import { fromJSON } from '../dist/index.js'
+    let xhr = new XMLHttpRequest()
+    xhr.open('GET', 'grammars/Zero.json')
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        let json = JSON.parse(xhr.responseText)
+        let grammar = fromJSON(json)
+        let tree = grammar.abstract.parseTree('eat apple')
+        document.getElementById('out').innerText = `
+          Abs: ${tree.show()}
+          Eng: ${grammar.concretes.ZeroEng.linearize(tree)}
+          Swe: ${grammar.concretes.ZeroSwe.linearize(tree)}
+        `
+      }
+    }
+    xhr.send()
+  </script>
+</head>
+<body>
+<h1>Browser test for gflib.js</h1>
+<pre id="out"></pre>
+</body>
+</html>

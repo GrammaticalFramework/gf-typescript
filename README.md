@@ -29,5 +29,26 @@ let grammar: GFGrammar | null = fromJSON(json)
 
 ### Browser
 
-**Coming soon**
+Using ES6 modules:
 
+```html
+<script type="module">
+  import { fromJSON } from 'dist/index.js'
+  let xhr = new XMLHttpRequest()
+  xhr.open('GET', 'test/grammars/Zero.json')
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      let json = JSON.parse(xhr.responseText)
+      let grammar = fromJSON(json)
+    }
+  }
+  xhr.send()
+</script>
+```
+
+## Directory structure
+
+- `dist`: compiled for use in browser
+- `lib`: compiled for use as Node module (without TypeScript)
+- `src`: TypeScript sources
+- `test`: test grammars and scripts
