@@ -1,0 +1,44 @@
+{
+  "name": "gf-typescript",
+  "version": "1.0.0",
+  "description": "TypeScript runtime for Grammatical Framework",
+  "author": "John J. Camilleri",
+  "license": "LGPL-3.0-or-later",
+  "keywords": [
+    "grammatical framework",
+    "grammar",
+    "language",
+    "multilingual"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/GrammaticalFramework/gf-typescript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GrammaticalFramework/gf-typescript/issues"
+  },
+  "homepage": "https://github.com/GrammaticalFramework/gf-typescript#readme",
+  "main": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "test": "npx mocha -r ts-node/register test/**/*.spec.ts",
+    "build": "tsc",
+    "lint": "eslint src/*.ts",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.0.10",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^6.0.1",
+    "mocha": "^6.1.4",
+    "should": "^13.2.3",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
+  }
+}
