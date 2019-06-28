@@ -21,14 +21,46 @@ export {
 
 /**
  * Convert from GF's JSON format into GFGrammar object
+ *
+ * TODO Much work remains here
  */
 export function fromJSON (json: GFJSON): GFGrammar | null {
   let types: {[key: string]: Type} = {}
-  json.abstract.funs.forEach((f): void => {
+  for (let f of json.abstract.funs) {
     types[f.fun] = new Type(f.type['.args'], f.type['.result'])
-  })
+  }
   let abs = new GFAbstract(json.abstract.flags.startcat, types)
-  let cncs = {} // TODO
+  let cncs: {[key: string]: GFConcrete} = {}
+  for (let c of json.concretes) {
+    let prods: {[key: number]: Rule[]} = {} // TODO
+    let funs: CncFun[] = [] // TODO
+    let seqs: Sym[][] = [] // TODO
+    let cats: {[key: string]: {s: number; e: number}} = {
+      Float: {
+        s: -3,
+        e: -3
+      },
+      Int: {
+        s: -2,
+        e: -2
+      },
+      String: {
+        s: -1,
+        e: -1
+      },
+    }
+    // Assuming order of lincats is correct here
+    let cx = 0
+    for (let lc of c.lincats) {
+      cats[lc.cat] = {
+        s: cx,
+        e: cx
+      }
+      cx++
+    }
+    let fids = Object.keys(prods).length
+    cncs[c.cnc] = new GFConcrete(c.flags, prods, funs, seqs, cats, fids)
+  }
   return new GFGrammar(abs, cncs)
 }
 

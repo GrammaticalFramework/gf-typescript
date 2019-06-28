@@ -6,7 +6,15 @@ var Zero = new GFGrammar(new GFAbstract('Utt', {
   ZeroEng: new GFConcrete({}, {
     0: [new Apply(4, []), new Apply(5, [])],
     1: [new Apply(6, [new PArg(0)])]
-  }, [new CncFun('\'lindef N\'', [1]), new CncFun('\'lindef N\'', [0]), new CncFun('\'lindef Utt\'', [1]), new CncFun('\'lindef Utt\'', [0]), new CncFun('apple', [2]), new CncFun('banana', [3]), new CncFun('eat', [4])], [
+  }, [
+    new CncFun('\'lindef N\'', [1]),
+    new CncFun('\'lindef N\'', [0]),
+    new CncFun('\'lindef Utt\'', [1]),
+    new CncFun('\'lindef Utt\'', [0]),
+    new CncFun('apple', [2]),
+    new CncFun('banana', [3]),
+    new CncFun('eat', [4])
+  ], [
     [new SymCat(0, 0)],
     [new SymLit(0, 0)],
     [new SymKS('apple')],
@@ -38,7 +46,16 @@ var Zero = new GFGrammar(new GFAbstract('Utt', {
     0: [new Apply(5, [])],
     1: [new Apply(4, [])],
     2: [new Apply(6, [new PArg(0)]), new Apply(7, [new PArg(1)])]
-  }, [new CncFun('\'lindef N\'', [1]), new CncFun('\'lindef N\'', [0]), new CncFun('\'lindef Utt\'', [1]), new CncFun('\'lindef Utt\'', [0]), new CncFun('apple', [3]), new CncFun('banana', [2]), new CncFun('eat', [4]), new CncFun('eat', [5])], [
+  }, [
+    new CncFun('\'lindef N\'', [1]),
+    new CncFun('\'lindef N\'', [0]),
+    new CncFun('\'lindef Utt\'', [1]),
+    new CncFun('\'lindef Utt\'', [0]),
+    new CncFun('apple', [3]),
+    new CncFun('banana', [2]),
+    new CncFun('eat', [4]),
+    new CncFun('eat', [5])
+  ], [
     [new SymCat(0, 0)],
     [new SymLit(0, 0)],
     [new SymKS('banan')],
