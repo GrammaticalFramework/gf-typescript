@@ -12,7 +12,7 @@ This runtime allows you use GF in pure JavaScript, and thus have GF-powered apps
 However, it has not been actively maintained as the other runtimes have been.
 So its features are limited and it is not efficient, making it really only useful for smaller grammars.
 
-## Using (GF JS)
+## Usage (GF JS)
 
 Your GF grammar should be compiled into JavaScript with: `gf --make --output-format=js`
 
@@ -74,7 +74,9 @@ Then you can import both runtime and grammar into the global namespace just like
 </script>
 ```
 
-## Using (GF JSON)
+## Usage (GF JSON)
+
+**⚠️ This is not functional yet! See [this issue](https://github.com/GrammaticalFramework/gf-typescript/issues/1).**
 
 Your GF grammar should be compiled into JSON with: `gf --make --output-format=canonical_json`.
 This requires a version of GF *later than* the 3.10 release.

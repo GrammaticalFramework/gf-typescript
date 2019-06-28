@@ -1,9 +1,10 @@
 /**
  * Specification of the JSON format output by `gf --output-format=canonical_gf`
  *
- * NOTE This is very preliminary and probably needs more work to cover all cases
+ * NOTE This is very preliminary and needs more work to cover all cases
  */
-interface GFJSON {
+
+export interface GFJSON {
   abstract: Abstract;
   concretes: Concrete[];
 }
@@ -50,5 +51,5 @@ interface Lincat {
 interface Lin {
   fun: string;
   args: Cat[];
-  lin: {[key: string]: any};
+  lin: {[key: string]: any}; // eslint-disable-line @typescript-eslint/no-explicit-any
 }

@@ -18,12 +18,13 @@
     "url": "https://github.com/GrammaticalFramework/gf-typescript/issues"
   },
   "homepage": "https://github.com/GrammaticalFramework/gf-typescript#readme",
-  "main": "lib/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
-    "test": "npx mocha -r ts-node/register test/**/*.spec.ts",
+    "test": "make -C test/grammars ZeroModule.ts && npx mocha --require ts-node/register test/**/*.spec.ts",
     "build": "tsc && tsc --project tsconfig.dist.json",
     "clean": "rm dist/* lib/*",
     "lint": "eslint src/*.ts",

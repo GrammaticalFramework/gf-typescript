@@ -1,3 +1,5 @@
+import { GFJSON } from './gf-json'
+
 /**
  * Module exports
  */
