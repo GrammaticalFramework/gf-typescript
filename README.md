@@ -12,9 +12,71 @@ This runtime allows you use GF in pure JavaScript, and thus have GF-powered apps
 However, it has not been actively maintained as the other runtimes have been.
 So its features are limited and it is not efficient, making it really only useful for smaller grammars.
 
-## Using
+## Using (GF JS)
 
-Your GF grammar should be compiled into JSON with: `gf --make --output-format=json`.
+Your GF grammar should be compiled into JavaScript with: `gf --make --output-format=js`
+
+### With ES6 modules
+
+The resulting JavaScript grammar file needs to be modified from:
+
+```js
+var Zero = new GFGrammar(...)
+```
+
+to:
+
+```js
+import {
+  GFGrammar,
+  GFAbstract,
+  GFConcrete,
+  Fun,
+  Type,
+  Apply,
+  Coerce,
+  PArg,
+  Const,
+  CncFun,
+  SymCat,
+  SymKS,
+  SymKP,
+  SymLit,
+  Alt,
+} from '../../dist/index' // assuming it's in test/grammars
+export default new GFGrammar(...)
+```
+
+You can then use the grammar like so:
+
+```js
+import grammar from './test/grammars/Zero.js'
+```
+
+### Without ES6 modules
+
+To avoid using modules, you need to comment out the `export` statements from the runtime (`dist/index.js`):
+
+```js
+/**
+ * Module exports
+ */
+// export { GFGrammar, GFAbstract, GFConcrete, Fun, Type, Apply, Coerce, PArg, Const, CncFun, SymCat, SymKS, SymKP, SymLit, Alt, };
+```
+
+Then you can import both runtime and grammar into the global namespace just like in the good old days:
+
+```html
+<script src="dist/index.js"></script>
+<script src="test/grammars/Zero.js"></script>
+<script>
+  Zero.abstract.parseTree(...)
+</script>
+```
+
+## Using (GF JSON)
+
+Your GF grammar should be compiled into JSON with: `gf --make --output-format=canonical_json`.
 This requires a version of GF *later than* the 3.10 release.
 
 ### TypeScript + Node
