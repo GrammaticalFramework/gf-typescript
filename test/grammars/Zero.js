@@ -19,7 +19,7 @@ var Zero = new GFGrammar(new GFAbstract('Utt', {
     [new SymLit(0, 0)],
     [new SymKS('apple')],
     [new SymKS('banana')],
-    [new SymKS('eat'), new SymKS('a'), new SymCat(0, 0)]
+    [new SymKS('eat'), new SymKP([new SymKS('a')], [new Alt([new SymKS('an')], ['a', 'e', 'i', 'o'])]), new SymCat(0, 0)]
   ], {
     Float: {
       s: -3,

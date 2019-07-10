@@ -9,6 +9,6 @@ concrete ZeroEng of Zero = {
     banana = { s = "banana" } ;
 
   oper
-    -- artIndef : Str = pre {"a" ; "an" / strs {"a" ; "e" ; "i" ; "o"}} ;
-    artIndef : Str = "a" ;
+    artIndef : Str = pre {"a" ; "an" / strs {"a" ; "e" ; "i" ; "o"}} ;
+    -- artIndef : Str = "a" ;
 }

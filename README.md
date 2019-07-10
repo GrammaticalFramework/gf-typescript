@@ -12,7 +12,44 @@ This runtime allows you use GF in pure JavaScript, and thus have GF-powered apps
 However, it has not been actively maintained as the other runtimes have been.
 So its features are limited and it is not efficient, making it really only useful for smaller grammars.
 
-## Usage (GF JS)
+## Usage with PGF JSON (recommended)
+
+Your GF grammar should be compiled into JSON with: `gf --make --output-format=json`.
+This requires a version of GF *later than* the 3.10 release.
+
+### TypeScript + Node
+
+```ts
+import { fromJSON, GFGrammar } from 'gf-typescript'
+import { readFileSync } from 'fs'
+
+let json = JSON.parse(readFileSync('./test/grammars/Zero.json').toString())
+let grammar: GFGrammar | null = fromJSON(json)
+```
+
+### Browser
+
+Using ES6 modules:
+
+```html
+<script type="module">
+  import { fromJSON } from 'dist/index.js'
+  let xhr = new XMLHttpRequest()
+  xhr.open('GET', 'test/grammars/Zero.json')
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      let json = JSON.parse(xhr.responseText)
+      let grammar = fromJSON(json)
+    }
+  }
+  xhr.send()
+</script>
+```
+
+## Usage with PGF JS
+
+**Compilation of GF to JavaScript will soon be deprecated, but these instructions are here
+in case you can't/won't use the latest GF.**
 
 Your GF grammar should be compiled into JavaScript with: `gf --make --output-format=js`
 
@@ -71,42 +108,6 @@ Then you can import both runtime and grammar into the global namespace just like
 <script src="test/grammars/Zero.js"></script>
 <script>
   Zero.abstract.parseTree(...)
-</script>
-```
-
-## Usage (GF JSON)
-
-**⚠️ This is not functional yet! See [this issue](https://github.com/GrammaticalFramework/gf-typescript/issues/1).**
-
-Your GF grammar should be compiled into JSON with: `gf --make --output-format=canonical_json`.
-This requires a version of GF *later than* the 3.10 release.
-
-### TypeScript + Node
-
-```ts
-import { fromJSON, GFGrammar } from 'gf-typescript'
-import { readFileSync } from 'fs'
-
-let json = JSON.parse(readFileSync('./test/grammars/Zero.json').toString())
-let grammar: GFGrammar | null = fromJSON(json)
-```
-
-### Browser
-
-Using ES6 modules:
-
-```html
-<script type="module">
-  import { fromJSON } from 'dist/index.js'
-  let xhr = new XMLHttpRequest()
-  xhr.open('GET', 'test/grammars/Zero.json')
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      let json = JSON.parse(xhr.responseText)
-      let grammar = fromJSON(json)
-    }
-  }
-  xhr.send()
 </script>
 ```
 

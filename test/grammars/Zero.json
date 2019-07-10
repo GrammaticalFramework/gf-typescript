@@ -1,136 +1,251 @@
 {
   "abstract": {
-    "abs": "Zero",
-    "flags": {
-      "startcat": "Utt"
-    },
-    "cats": ["N", "Utt"],
-    "funs": [{
-      "fun": "apple",
-      "type": {
-        ".args": [],
-        ".result": "N"
+    "name": "Zero",
+    "startcat": "Utt",
+    "funs": {
+      "apple": {
+        "args": [],
+        "cat": "N"
+      },
+      "banana": {
+        "args": [],
+        "cat": "N"
+      },
+      "eat": {
+        "args": ["N"],
+        "cat": "Utt"
       }
-    }, {
-      "fun": "banana",
-      "type": {
-        ".args": [],
-        ".result": "N"
-      }
-    }, {
-      "fun": "eat",
-      "type": {
-        ".args": ["N"],
-        ".result": "Utt"
-      }
-    }]
+    }
   },
-  "concretes": [{
-    "cnc": "ZeroSwe",
-    "abs": "Zero",
-    "flags": {},
-    "params": [{
-      "param": "ZeroSwe.Gender",
-      "values": ["ZeroSwe.Utrum", "ZeroSwe.Neutrum"]
-    }],
-    "lincats": [{
-      "cat": "N",
-      "lintype": {
-        "s": "Str",
-        "g": "ZeroSwe.Gender"
-      }
-    }, {
-      "cat": "Utt",
-      "lintype": {
-        "s": "Str"
-      }
-    }],
-    "lins": [{
-      "fun": "apple",
-      "args": [],
-      "lin": {
-        "s": "äpple",
-        "g": {
-          ".param": "ZeroSwe.Neutrum"
-        }
-      }
-    }, {
-      "fun": "banana",
-      "args": [],
-      "lin": {
-        "s": "banan",
-        "g": {
-          ".param": "ZeroSwe.Utrum"
-        }
-      }
-    }, {
-      "fun": "eat",
-      "args": ["N_0"],
-      "lin": {
-        "s": ["äta", {
-          ".select": {
-            ".tblarg": "ZeroSwe.Gender",
-            ".tblrows": [{
-              ".pattern": "ZeroSwe.Utrum",
-              ".value": "en"
-            }, {
-              ".pattern": "ZeroSwe.Neutrum",
-              ".value": "ett"
-            }]
-          },
-          ".key": {
-            ".project": {
-              ".var": "N_0"
-            },
-            ".label": "g"
-          }
+  "concretes": {
+    "ZeroEng": {
+      "flags": {},
+      "productions": {
+        "0": [{
+          "type": "Apply",
+          "fid": 4,
+          "args": []
         }, {
-          ".project": {
-            ".var": "N_0"
-          },
-          ".label": "s"
+          "type": "Apply",
+          "fid": 5,
+          "args": []
+        }],
+        "1": [{
+          "type": "Apply",
+          "fid": 6,
+          "args": [{
+            "type": "PArg",
+            "hypos": [],
+            "fid": 0
+          }]
         }]
-      }
-    }]
-  }, {
-    "cnc": "ZeroEng",
-    "abs": "Zero",
-    "flags": {},
-    "params": [],
-    "lincats": [{
-      "cat": "N",
-      "lintype": {
-        "s": "Str"
-      }
-    }, {
-      "cat": "Utt",
-      "lintype": {
-        "s": "Str"
-      }
-    }],
-    "lins": [{
-      "fun": "apple",
-      "args": [],
-      "lin": {
-        "s": "apple"
-      }
-    }, {
-      "fun": "banana",
-      "args": [],
-      "lin": {
-        "s": "banana"
-      }
-    }, {
-      "fun": "eat",
-      "args": ["N_0"],
-      "lin": {
-        "s": ["eat", "a", {
-          ".project": {
-            ".var": "N_0"
-          },
-          ".label": "s"
+      },
+      "functions": [{
+        "name": "'lindef N'",
+        "lins": [1]
+      }, {
+        "name": "'lindef N'",
+        "lins": [0]
+      }, {
+        "name": "'lindef Utt'",
+        "lins": [1]
+      }, {
+        "name": "'lindef Utt'",
+        "lins": [0]
+      }, {
+        "name": "apple",
+        "lins": [2]
+      }, {
+        "name": "banana",
+        "lins": [3]
+      }, {
+        "name": "eat",
+        "lins": [4]
+      }],
+      "sequences": [
+        [{
+          "type": "SymCat",
+          "args": [0, 0]
+        }],
+        [{
+          "type": "SymLit",
+          "args": [0, 0]
+        }],
+        [{
+          "type": "SymKS",
+          "args": ["apple"]
+        }],
+        [{
+          "type": "SymKS",
+          "args": ["banana"]
+        }],
+        [{
+          "type": "SymKS",
+          "args": ["eat"]
+        }, {
+          "type": "SymKP",
+          "args": [
+            [{
+              "type": "SymKS",
+              "args": ["a"]
+            }],
+            [{
+              "type": "Alt",
+              "args": [
+                [{
+                  "type": "SymKS",
+                  "args": ["an"]
+                }],
+                ["a", "e", "i", "o"]
+              ]
+            }]
+          ]
+        }, {
+          "type": "SymCat",
+          "args": [0, 0]
         }]
-      }
-    }]
-  }]
+      ],
+      "categories": {
+        "Float": {
+          "start": -3,
+          "end": -3
+        },
+        "Int": {
+          "start": -2,
+          "end": -2
+        },
+        "N": {
+          "start": 0,
+          "end": 0
+        },
+        "String": {
+          "start": -1,
+          "end": -1
+        },
+        "Utt": {
+          "start": 1,
+          "end": 1
+        }
+      },
+      "totalfids": 2
+    },
+    "ZeroSwe": {
+      "flags": {},
+      "productions": {
+        "0": [{
+          "type": "Apply",
+          "fid": 5,
+          "args": []
+        }],
+        "1": [{
+          "type": "Apply",
+          "fid": 4,
+          "args": []
+        }],
+        "2": [{
+          "type": "Apply",
+          "fid": 6,
+          "args": [{
+            "type": "PArg",
+            "hypos": [],
+            "fid": 0
+          }]
+        }, {
+          "type": "Apply",
+          "fid": 7,
+          "args": [{
+            "type": "PArg",
+            "hypos": [],
+            "fid": 1
+          }]
+        }]
+      },
+      "functions": [{
+        "name": "'lindef N'",
+        "lins": [1]
+      }, {
+        "name": "'lindef N'",
+        "lins": [0]
+      }, {
+        "name": "'lindef Utt'",
+        "lins": [1]
+      }, {
+        "name": "'lindef Utt'",
+        "lins": [0]
+      }, {
+        "name": "apple",
+        "lins": [3]
+      }, {
+        "name": "banana",
+        "lins": [2]
+      }, {
+        "name": "eat",
+        "lins": [4]
+      }, {
+        "name": "eat",
+        "lins": [5]
+      }],
+      "sequences": [
+        [{
+          "type": "SymCat",
+          "args": [0, 0]
+        }],
+        [{
+          "type": "SymLit",
+          "args": [0, 0]
+        }],
+        [{
+          "type": "SymKS",
+          "args": ["banan"]
+        }],
+        [{
+          "type": "SymKS",
+          "args": ["äpple"]
+        }],
+        [{
+          "type": "SymKS",
+          "args": ["äta"]
+        }, {
+          "type": "SymKS",
+          "args": ["en"]
+        }, {
+          "type": "SymCat",
+          "args": [0, 0]
+        }],
+        [{
+          "type": "SymKS",
+          "args": ["äta"]
+        }, {
+          "type": "SymKS",
+          "args": ["ett"]
+        }, {
+          "type": "SymCat",
+          "args": [0, 0]
+        }]
+      ],
+      "categories": {
+        "Float": {
+          "start": -3,
+          "end": -3
+        },
+        "Int": {
+          "start": -2,
+          "end": -2
+        },
+        "N": {
+          "start": 0,
+          "end": 1
+        },
+        "String": {
+          "start": -1,
+          "end": -1
+        },
+        "Utt": {
+          "start": 2,
+          "end": 2
+        }
+      },
+      "totalfids": 3
+    }
+  }
 }

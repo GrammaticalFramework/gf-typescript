@@ -1,4 +1,7 @@
 concrete ZeroSwe of Zero = {
+  flags
+    coding = utf8 ;
+  
   param
     Gender = Utrum | Neutrum ;
 

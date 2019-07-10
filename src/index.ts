@@ -1,4 +1,4 @@
-import { GFJSON } from './gf-json'
+import * as JSON from './pgf-json'
 
 /**
  * Module exports
@@ -19,51 +19,14 @@ export {
   SymKP,
   SymLit,
   Alt,
+  fromJSON
 }
 
 /**
- * Convert from GF's JSON format into GFGrammar object
- *
- * TODO Much work remains here
+ * Convert from PGF JSON format into GFGrammar object
  */
-export function fromJSON (json: GFJSON): GFGrammar | null {
-  let types: {[key: string]: Type} = {}
-  for (let f of json.abstract.funs) {
-    types[f.fun] = new Type(f.type['.args'], f.type['.result'])
-  }
-  let abs = new GFAbstract(json.abstract.flags.startcat, types)
-  let cncs: {[key: string]: GFConcrete} = {}
-  for (let c of json.concretes) {
-    let prods: {[key: number]: Rule[]} = {} // TODO
-    let funs: CncFun[] = [] // TODO
-    let seqs: Sym[][] = [] // TODO
-    let cats: {[key: string]: {s: number; e: number}} = {
-      Float: {
-        s: -3,
-        e: -3
-      },
-      Int: {
-        s: -2,
-        e: -2
-      },
-      String: {
-        s: -1,
-        e: -1
-      },
-    }
-    // Assuming order of lincats is correct here
-    let cx = 0
-    for (let lc of c.lincats) {
-      cats[lc.cat] = {
-        s: cx,
-        e: cx
-      }
-      cx++
-    }
-    let fids = Object.keys(prods).length
-    cncs[c.cnc] = new GFConcrete(c.flags, prods, funs, seqs, cats, fids)
-  }
-  return new GFGrammar(abs, cncs)
+function fromJSON (json: JSON.PGF): GFGrammar | null {
+  return GFGrammar.fromJSON(json)
 }
 
 /**
@@ -76,6 +39,12 @@ class GFGrammar {
   public constructor(abstract: GFAbstract, concretes: {[key: string]: GFConcrete}) {
     this.abstract = abstract
     this.concretes = concretes
+  }
+
+  public static fromJSON(json: JSON.PGF): GFGrammar {
+    let cncs: {[key: string]: GFConcrete} =
+      mapObject(json.concretes, (c: JSON.Concrete): GFConcrete => GFConcrete.fromJSON(c) )
+    return new GFGrammar(GFAbstract.fromJSON(json. abstract), cncs)
   }
 
   public translate(
@@ -221,6 +190,14 @@ class GFAbstract {
     this.types = types
   }
 
+  public static fromJSON(json: JSON.Abstract): GFAbstract {
+    let typs: {[key: string]: Type} =
+      mapObject(json.funs, (fun: JSON.AbsFun): Type => {
+        return new Type(fun.args, fun.cat)
+      })
+    return new GFAbstract(json.startcat, typs)
+  }
+
   public addType(fun: string, args: string[], cat: string): void {
     this.types[fun] = new Type(args, cat)
   }
@@ -325,17 +302,17 @@ class Type {
  */
 class GFConcrete {
   public flags: {[key: string]: string}
-  // private productions: {[key: number]: Rule[]}
+  // private productions: {[key: number]: Production[]}
   private functions: CncFun[]
   // private sequences: Sym[][]
   public startCats: {[key: string]: {s: number; e: number}}
   public totalFIds: number
-  public pproductions: {[key: number]: Rule[]}
+  public pproductions: {[key: number]: Production[]}
   private lproductions: {[key: string]: {fid: FId; fun: CncFun}[]}
 
   public constructor(
     flags: {[key: string]: string},
-    productions: {[key: number]: Rule[]},
+    productions: {[key: number]: Production[]},
     functions: CncFun[],
     sequences: Sym[][],
     startCats: {[key: string]: {s: number; e: number}},
@@ -400,6 +377,34 @@ class GFConcrete {
       }
     }
 
+  }
+
+  public static fromJSON(json: JSON.Concrete): GFConcrete {
+    // TODO check keys string/number
+    let prods: {[key: number]: Production[]} =
+      mapObject(json.productions, (prods: JSON.Production[]): Production[] => {
+        return prods
+          .map((prod: JSON.Production): Production | null => productionFromJSON(prod))
+          .filter((x: Production | null): boolean => x !== null) as Production[]
+      })
+
+    let funs: CncFun[] = json.functions.map((fun: JSON.CncFun): CncFun => {
+      return new CncFun(fun.name, fun.lins)
+    })
+
+    let seqs: Sym[][] = json.sequences.map((syms: JSON.Sym[]): Sym[] => {
+      return syms
+        .map((sym: JSON.Sym): Sym | null => symFromJSON(sym))
+        .filter((x: Sym | null): boolean => x !== null) as Sym[]
+    })
+
+    let cats: {[key: string]: {s: number; e: number}} =
+      mapObject(json.categories, (cat: JSON.Category): {s: number; e: number} => {
+        return { s: cat.start, e: cat.end }
+      })
+
+    let fids = json.totalfids
+    return new GFConcrete(json.flags, prods, funs, seqs, cats, fids)
   }
 
   private linearizeSyms(tree: Fun, tag: string): {fid: FId; table: Sym[][]}[] {
@@ -754,9 +759,23 @@ class TaggedString {
 type FId = number
 
 /**
- * Rule
+ * Production
  */
-type Rule = Apply | Coerce | Const
+type Production = Apply | Coerce | Const
+
+function productionFromJSON(json: JSON.Production): Production | null {
+  switch (json.type) {
+    case 'Apply':
+      let pargs: PArg[] = (json as JSON.Apply).args.map((parg: JSON.PArg): PArg => {
+        return new PArg(...parg.hypos, parg.fid)
+      })
+      return new Apply((json as JSON.Apply).fid, pargs)
+    case 'Coerce':
+      return new Coerce((json as JSON.Coerce).arg)
+    default:
+      return null
+  }
+}
 
 /**
  * Apply
@@ -817,6 +836,7 @@ class PArg {
   public fid: FId
   public hypos: FId[]
 
+  // parameters 0..n-1 = hypos, parameter n = fid
   public constructor(...hypos: FId[]) {
     this.fid = hypos[hypos.length-1]
     if (hypos.length > 1)
@@ -876,6 +896,32 @@ class CncFun {
  * Sym: Definition of symbols present in linearization records
  */
 type Sym = SymCat | SymKS | SymKP | SymLit
+
+function symFromJSON(json: JSON.Sym): Sym | null {
+  switch (json.type) {
+    case 'SymCat':
+      return new SymCat(json.args[0] as number, json.args[1] as number)
+    case 'SymLit':
+      return new SymLit(json.args[0] as number, json.args[1] as number)
+    case 'SymKS':
+      return new SymKS(...json.args as string[])
+    case 'SymKP':
+      let args: SymKS[] = (json.args[0] as JSON.Sym[]).map((sym: JSON.Sym): SymKS => {
+        return new SymKS(...sym.args as string[])
+      })
+      let alts: Alt[] = (json.args[1] as JSON.Sym[]).map((alt: JSON.Sym): Alt => {
+        let tokens: SymKS[] = (alt.args[0] as JSON.Sym[]).map((sym: JSON.Sym): SymKS => {
+          return new SymKS(...sym.args as string[])
+        })
+        return new Alt(tokens, alt.args[1] as string[])
+      })
+      return new SymKP(args, alts)
+    // case 'SymVar':
+    // case 'SymNE':
+    default:
+      return null
+  }
+}
 
 /**
  * SymCat: Object to represent argument projections in grammar rules
@@ -1199,7 +1245,7 @@ class ParseState {
 
         let rules = forest[fid] // could be undefined
         for (let j in rules) {
-          let rule: Rule = rules[j]
+          let rule: Production = rules[j]
           if (rule.id == 'Const') {
             trees.push((rule as Const).lit)
           } else {
@@ -1426,7 +1472,7 @@ class Chart {
   private active: {[key: number]: ActiveItemMap} // key: FId
   private actives: {[key: number]: ActiveItemMap}[] // key: FId
   private passive: {[key: string]: FId}
-  public forest: {[key: number]: Rule[]} // key: FId
+  public forest: {[key: number]: Production[]} // key: FId
   public nextId: number
   public offset: number
 
@@ -1498,7 +1544,7 @@ class Chart {
     let rules: Apply[] = []
     let forest = this.forest
 
-    let go = function (rules0: Rule[]): void {
+    let go = function (rules0: Production[]): void {
       for (let i in rules0) {
         let rule = rules0[i]
         switch (rule.id) {
@@ -1594,3 +1640,11 @@ function isUndefined(a: any): boolean { // eslint-disable-line @typescript-eslin
 // function isFunction(a: any): boolean {
 //   return typeof a == 'function'
 // }
+
+function mapObject(obj: {[key: string]: any}, fun: (_: any) => any): {[key: string]: any} { // eslint-disable-line @typescript-eslint/no-explicit-any
+  let obj2: {[key: string]: any} = {} // eslint-disable-line @typescript-eslint/no-explicit-any
+  for (let x in obj) {
+    obj2[x] = fun(obj[x])
+  }
+  return obj2
+}
