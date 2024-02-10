@@ -1,0 +1,882 @@
+{
+  "abstract": {
+    "name": "List",
+    "startcat": "S",
+    "funs": {
+      "Bar": {
+        "args": [],
+        "cat": "PN"
+      },
+      "Bat": {
+        "args": [],
+        "cat": "PN"
+      },
+      "Foo": {
+        "args": [],
+        "cat": "PN"
+      },
+      "mkSimpleConsList": {
+        "args": [
+          "PN",
+          "SimpleList"
+        ],
+        "cat": "SimpleList"
+      },
+      "mkSimpleList": {
+        "args": [
+          "PN",
+          "PN"
+        ],
+        "cat": "SimpleList"
+      },
+      "mkSimpleListNP": {
+        "args": [
+          "SimpleList"
+        ],
+        "cat": "SimpleListNP"
+      }
+    }
+  },
+  "concretes": {
+    "ListEng": {
+      "flags": {},
+      "productions": {
+        "1": [
+          {
+            "type": "Apply",
+            "fid": 6,
+            "args": []
+          },
+          {
+            "type": "Apply",
+            "fid": 7,
+            "args": []
+          },
+          {
+            "type": "Apply",
+            "fid": 8,
+            "args": []
+          }
+        ],
+        "3": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 23
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 3
+              }
+            ]
+          }
+        ],
+        "4": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 23
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 4
+              }
+            ]
+          }
+        ],
+        "5": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 23
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 5
+              }
+            ]
+          }
+        ],
+        "6": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 23
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 6
+              }
+            ]
+          }
+        ],
+        "7": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 0
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 24
+              }
+            ]
+          },
+          {
+            "type": "Apply",
+            "fid": 10,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 0
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 23
+              }
+            ]
+          }
+        ],
+        "8": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 1
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 24
+              }
+            ]
+          },
+          {
+            "type": "Apply",
+            "fid": 10,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 1
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 23
+              }
+            ]
+          }
+        ],
+        "9": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 2
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 24
+              }
+            ]
+          },
+          {
+            "type": "Apply",
+            "fid": 10,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 2
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 23
+              }
+            ]
+          }
+        ],
+        "10": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 0
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 25
+              }
+            ]
+          }
+        ],
+        "11": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 1
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 25
+              }
+            ]
+          }
+        ],
+        "12": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 2
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 25
+              }
+            ]
+          }
+        ],
+        "14": [
+          {
+            "type": "Apply",
+            "fid": 11,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 26
+              }
+            ]
+          }
+        ],
+        "16": [
+          {
+            "type": "Apply",
+            "fid": 11,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 27
+              }
+            ]
+          }
+        ],
+        "20": [
+          {
+            "type": "Apply",
+            "fid": 11,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 28
+              }
+            ]
+          }
+        ],
+        "23": [
+          {
+            "type": "Coerce",
+            "arg": 0
+          },
+          {
+            "type": "Coerce",
+            "arg": 1
+          },
+          {
+            "type": "Coerce",
+            "arg": 2
+          }
+        ],
+        "24": [
+          {
+            "type": "Coerce",
+            "arg": 7
+          },
+          {
+            "type": "Coerce",
+            "arg": 8
+          },
+          {
+            "type": "Coerce",
+            "arg": 9
+          }
+        ],
+        "25": [
+          {
+            "type": "Coerce",
+            "arg": 10
+          },
+          {
+            "type": "Coerce",
+            "arg": 11
+          },
+          {
+            "type": "Coerce",
+            "arg": 12
+          }
+        ],
+        "26": [
+          {
+            "type": "Coerce",
+            "arg": 3
+          },
+          {
+            "type": "Coerce",
+            "arg": 4
+          }
+        ],
+        "27": [
+          {
+            "type": "Coerce",
+            "arg": 5
+          },
+          {
+            "type": "Coerce",
+            "arg": 6
+          }
+        ],
+        "28": [
+          {
+            "type": "Coerce",
+            "arg": 7
+          },
+          {
+            "type": "Coerce",
+            "arg": 8
+          },
+          {
+            "type": "Coerce",
+            "arg": 9
+          },
+          {
+            "type": "Coerce",
+            "arg": 10
+          },
+          {
+            "type": "Coerce",
+            "arg": 11
+          },
+          {
+            "type": "Coerce",
+            "arg": 12
+          }
+        ]
+      },
+      "functions": [
+        {
+          "name": "'lindef PN'",
+          "lins": [
+            16,
+            16
+          ]
+        },
+        {
+          "name": "'lindef PN'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "'lindef SimpleList'",
+          "lins": [
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        {
+          "name": "'lindef SimpleList'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "'lindef SimpleListNP'",
+          "lins": [
+            16,
+            16,
+            16,
+            16
+          ]
+        },
+        {
+          "name": "'lindef SimpleListNP'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "Bar",
+          "lins": [
+            17,
+            18
+          ]
+        },
+        {
+          "name": "Bat",
+          "lins": [
+            19,
+            20
+          ]
+        },
+        {
+          "name": "Foo",
+          "lins": [
+            21,
+            22
+          ]
+        },
+        {
+          "name": "mkSimpleConsList",
+          "lins": [
+            2,
+            7,
+            3,
+            4,
+            12,
+            13,
+            14,
+            15
+          ]
+        },
+        {
+          "name": "mkSimpleList",
+          "lins": [
+            0,
+            5,
+            0,
+            0,
+            10,
+            11,
+            10,
+            10
+          ]
+        },
+        {
+          "name": "mkSimpleListNP",
+          "lins": [
+            1,
+            6,
+            8,
+            9
+          ]
+        }
+      ],
+      "sequences": [
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "and"
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              4
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "&+"
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              ","
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "&+"
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              ","
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              2
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "&+"
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              ","
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              3
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              1
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              1
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "and"
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              5
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              1
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "&+"
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              ","
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              1
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              2
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "and"
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              6
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              3
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "and"
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              7
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              1
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              4
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              5
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              6
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              7
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymLit",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "Bar"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "Bar's"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "Bat"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "Bat's"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "Foo"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "Foo's"
+            ]
+          }
+        ]
+      ],
+      "categories": {
+        "Float": {
+          "start": -3,
+          "end": -3
+        },
+        "Int": {
+          "start": -2,
+          "end": -2
+        },
+        "PN": {
+          "start": 0,
+          "end": 2
+        },
+        "SimpleList": {
+          "start": 3,
+          "end": 12
+        },
+        "SimpleListNP": {
+          "start": 13,
+          "end": 22
+        },
+        "String": {
+          "start": -1,
+          "end": -1
+        }
+      },
+      "totalfids": 29
+    }
+  }
+}

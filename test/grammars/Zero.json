@@ -12,7 +12,9 @@
         "cat": "N"
       },
       "eat": {
-        "args": ["N"],
+        "args": [
+          "N"
+        ],
         "cat": "Utt"
       }
     }
@@ -21,89 +23,160 @@
     "ZeroEng": {
       "flags": {},
       "productions": {
-        "0": [{
-          "type": "Apply",
-          "fid": 4,
-          "args": []
-        }, {
-          "type": "Apply",
-          "fid": 5,
-          "args": []
-        }],
-        "1": [{
-          "type": "Apply",
-          "fid": 6,
-          "args": [{
-            "type": "PArg",
-            "hypos": [],
-            "fid": 0
-          }]
-        }]
+        "0": [
+          {
+            "type": "Apply",
+            "fid": 4,
+            "args": []
+          },
+          {
+            "type": "Apply",
+            "fid": 5,
+            "args": []
+          }
+        ],
+        "1": [
+          {
+            "type": "Apply",
+            "fid": 6,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 0
+              }
+            ]
+          }
+        ]
       },
-      "functions": [{
-        "name": "'lindef N'",
-        "lins": [1]
-      }, {
-        "name": "'lindef N'",
-        "lins": [0]
-      }, {
-        "name": "'lindef Utt'",
-        "lins": [1]
-      }, {
-        "name": "'lindef Utt'",
-        "lins": [0]
-      }, {
-        "name": "apple",
-        "lins": [2]
-      }, {
-        "name": "banana",
-        "lins": [3]
-      }, {
-        "name": "eat",
-        "lins": [4]
-      }],
-      "sequences": [
-        [{
-          "type": "SymCat",
-          "args": [0, 0]
-        }],
-        [{
-          "type": "SymLit",
-          "args": [0, 0]
-        }],
-        [{
-          "type": "SymKS",
-          "args": ["apple"]
-        }],
-        [{
-          "type": "SymKS",
-          "args": ["banana"]
-        }],
-        [{
-          "type": "SymKS",
-          "args": ["eat"]
-        }, {
-          "type": "SymKP",
-          "args": [
-            [{
-              "type": "SymKS",
-              "args": ["a"]
-            }],
-            [{
-              "type": "Alt",
-              "args": [
-                [{
-                  "type": "SymKS",
-                  "args": ["an"]
-                }],
-                ["a", "e", "i", "o"]
-              ]
-            }]
+      "functions": [
+        {
+          "name": "'lindef N'",
+          "lins": [
+            1
           ]
-        }, {
-          "type": "SymCat",
-          "args": [0, 0]
-        }]
+        },
+        {
+          "name": "'lindef N'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "'lindef Utt'",
+          "lins": [
+            1
+          ]
+        },
+        {
+          "name": "'lindef Utt'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "apple",
+          "lins": [
+            2
+          ]
+        },
+        {
+          "name": "banana",
+          "lins": [
+            3
+          ]
+        },
+        {
+          "name": "eat",
+          "lins": [
+            4
+          ]
+        }
+      ],
+      "sequences": [
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymLit",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "apple"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "banana"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "eat"
+            ]
+          },
+          {
+            "type": "SymKP",
+            "args": [
+              [
+                {
+                  "type": "SymKS",
+                  "args": [
+                    "a"
+                  ]
+                }
+              ],
+              [
+                {
+                  "type": "Alt",
+                  "args": [
+                    [
+                      {
+                        "type": "SymKS",
+                        "args": [
+                          "an"
+                        ]
+                      }
+                    ],
+                    [
+                      "a",
+                      "e",
+                      "i",
+                      "o"
+                    ]
+                  ]
+                }
+              ]
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ]
       ],
       "categories": {
         "Float": {
@@ -132,96 +205,172 @@
     "ZeroSwe": {
       "flags": {},
       "productions": {
-        "0": [{
-          "type": "Apply",
-          "fid": 5,
-          "args": []
-        }],
-        "1": [{
-          "type": "Apply",
-          "fid": 4,
-          "args": []
-        }],
-        "2": [{
-          "type": "Apply",
-          "fid": 6,
-          "args": [{
-            "type": "PArg",
-            "hypos": [],
-            "fid": 0
-          }]
-        }, {
-          "type": "Apply",
-          "fid": 7,
-          "args": [{
-            "type": "PArg",
-            "hypos": [],
-            "fid": 1
-          }]
-        }]
+        "0": [
+          {
+            "type": "Apply",
+            "fid": 5,
+            "args": []
+          }
+        ],
+        "1": [
+          {
+            "type": "Apply",
+            "fid": 4,
+            "args": []
+          }
+        ],
+        "2": [
+          {
+            "type": "Apply",
+            "fid": 6,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 0
+              }
+            ]
+          },
+          {
+            "type": "Apply",
+            "fid": 7,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 1
+              }
+            ]
+          }
+        ]
       },
-      "functions": [{
-        "name": "'lindef N'",
-        "lins": [1]
-      }, {
-        "name": "'lindef N'",
-        "lins": [0]
-      }, {
-        "name": "'lindef Utt'",
-        "lins": [1]
-      }, {
-        "name": "'lindef Utt'",
-        "lins": [0]
-      }, {
-        "name": "apple",
-        "lins": [3]
-      }, {
-        "name": "banana",
-        "lins": [2]
-      }, {
-        "name": "eat",
-        "lins": [4]
-      }, {
-        "name": "eat",
-        "lins": [5]
-      }],
+      "functions": [
+        {
+          "name": "'lindef N'",
+          "lins": [
+            1
+          ]
+        },
+        {
+          "name": "'lindef N'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "'lindef Utt'",
+          "lins": [
+            1
+          ]
+        },
+        {
+          "name": "'lindef Utt'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "apple",
+          "lins": [
+            3
+          ]
+        },
+        {
+          "name": "banana",
+          "lins": [
+            2
+          ]
+        },
+        {
+          "name": "eat",
+          "lins": [
+            4
+          ]
+        },
+        {
+          "name": "eat",
+          "lins": [
+            5
+          ]
+        }
+      ],
       "sequences": [
-        [{
-          "type": "SymCat",
-          "args": [0, 0]
-        }],
-        [{
-          "type": "SymLit",
-          "args": [0, 0]
-        }],
-        [{
-          "type": "SymKS",
-          "args": ["banan"]
-        }],
-        [{
-          "type": "SymKS",
-          "args": ["äpple"]
-        }],
-        [{
-          "type": "SymKS",
-          "args": ["äta"]
-        }, {
-          "type": "SymKS",
-          "args": ["en"]
-        }, {
-          "type": "SymCat",
-          "args": [0, 0]
-        }],
-        [{
-          "type": "SymKS",
-          "args": ["äta"]
-        }, {
-          "type": "SymKS",
-          "args": ["ett"]
-        }, {
-          "type": "SymCat",
-          "args": [0, 0]
-        }]
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymLit",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "banan"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "äpple"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "äta"
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "en"
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "äta"
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "ett"
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ]
       ],
       "categories": {
         "Float": {
