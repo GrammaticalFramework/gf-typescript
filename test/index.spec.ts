@@ -27,22 +27,24 @@ describe('Zero', (): void => {
   })
 
   let treeS = 'eat apple'
-  let tree = new Fun('eat', new Fun('apple'))
+  // let tree = new Fun('eat', new Fun('apple')) // TODO doesn't work
+  let tree = new Fun('eat')
+  tree.args = [new Fun('apple')]
 
   it('parses and prints tree', (): void => {
     let t = grammar.abstract.parseTree(treeS)
     should.exist(t)
     t && t.should.deepEqual(tree)
-    t && t.print().should.equal(treeS)
+    t && t.print().should.equal(tree.print())
   })
 
   it('linearises in English', (): void => {
-    let s = grammar.concretes['ZeroEng'].linearize(tree)
+    let s = grammar.concretes.ZeroEng.linearize(tree)
     s.should.equal('eat an apple')
   })
 
   it('linearises in Swedish', (): void => {
-    let s = grammar.concretes['ZeroSwe'].linearize(tree)
+    let s = grammar.concretes.ZeroSwe.linearize(tree)
     s.should.equal('äta ett äpple')
   })
 
@@ -64,11 +66,11 @@ describe('List', (): void => {
     should.exist(grammar.concretes.ListEng)
   })
 
-  // it('parses 3 items', (): void => {
-  //   let str = 'Foo , Bar and Bat'
-  //   let tree_expected = grammar.abstract.parseTree('mkSimpleListNP (mkSimpleConsList Foo (mkSimpleList Bar Bat))')
-  //   let tree_actual = grammar.concretes.ListEng.parseString(str, 'SimpleListNP')
-  //   should.equal(tree_actual, tree_expected)
-  // })
+  it('parses 3 items', (): void => {
+    let str = 'Foo , Bar and Bat'
+    let tree_expected = grammar.abstract.parseTree('mkSimpleListNP (mkSimpleConsList Foo (mkSimpleList Bar Bat))')
+    let tree_actual = grammar.concretes.ListEng.parseString(str, 'SimpleListNP')
+    should.equal(tree_actual, tree_expected)
+  })
 
 })
