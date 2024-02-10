@@ -23,3 +23,29 @@ ZeroModule.ts: Zero.js
 	  Alt, \
 	} from '../../src/index'" > $@
 	sed -E 's/^var .+ = new/export default new/' $< >> $@
+
+List.js: List.gf ListEng.gf
+	gf --make --output-format=js ListEng.gf
+
+List.json: List.gf ListEng.gf
+	gf --make --output-format=json ListEng.gf
+
+ListModule.ts: List.js
+	echo "import { \
+	  GFGrammar, \
+	  GFAbstract, \
+	  GFConcrete, \
+	  Fun, \
+	  Type, \
+	  Apply, \
+	  Coerce, \
+	  PArg, \
+	  Const, \
+	  CncFun, \
+	  SymCat, \
+	  SymKS, \
+	  SymKP, \
+	  SymLit, \
+	  Alt, \
+	} from '../../src/index'" > $@
+	sed -E 's/^var .+ = new/export default new/' $< >> $@
