@@ -27,9 +27,7 @@ describe('Zero', (): void => {
   })
 
   let treeS = 'eat apple'
-  // let tree = new Fun('eat', new Fun('apple')) // TODO doesn't work
-  let tree = new Fun('eat')
-  tree.args = [new Fun('apple')]
+  let tree = new Fun('eat', new Fun('apple'))
 
   it('parses and prints tree', (): void => {
     let t = grammar.abstract.parseTree(treeS)

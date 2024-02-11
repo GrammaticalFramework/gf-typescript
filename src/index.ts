@@ -91,8 +91,8 @@ class Fun {
   public constructor(name: string, ...args: Fun[]) {
     this.name = name
     this.args = []
-    for (let i = 1; i < args.length; i++) {
-      this.args[i-1] = args[i]
+    for (let i = 0; i < args.length; i++) {
+      this.args[i] = args[i]
     }
   }
 
@@ -1172,6 +1172,7 @@ class ParseState {
       function (tokens: string[], item: ActiveItem): void {
         if (tokens[0] == token) {
           let tokens1 = []
+          // TODO: suspicious indexing
           for (let i = 1; i < tokens.length; i++) {
             tokens1[i-1] = tokens[i]
           }
@@ -1212,6 +1213,7 @@ class ParseState {
       function (tokens: string[], item: ActiveItem): void {
         if (currentToken == '' || tokens[0].indexOf(currentToken) == 0) { //if begins with...
           let tokens1 = []
+          // TODO: suspicious indexing
           for (let i = 1; i < tokens.length; i++) {
             tokens1[i-1] = tokens[i]
           }
@@ -1284,7 +1286,7 @@ class ParseState {
       }
     }
 
-    let trees = []
+    let trees: Fun[] = []
     let fids = this.concrete.startCats[this.startCat]
     if (fids != null) {
       for (let fid0 = fids.s; fid0 <= fids.e; fid0++) {
