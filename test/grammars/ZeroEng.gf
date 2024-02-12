@@ -1,6 +1,6 @@
 concrete ZeroEng of Zero = {
   lincat
-    Utt, N, MassN = { s: Str };
+    Utt, N = { s: Str };
 
   lin
     eat n = { s = "eat" ++ artIndef ++ n.s } ;

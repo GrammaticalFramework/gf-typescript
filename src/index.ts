@@ -508,7 +508,8 @@ class GFConcrete {
         case 'KS': {
           let sym = sym0 as SymKS
           for (let j in sym.tokens) {
-            ts.push(new TaggedString(sym.tokens[j], sym.tag as string))
+            let toks = removeQuotes(sym.tokens[j])
+            ts.push(new TaggedString(toks, sym.tag as string))
           }
           break
         }
@@ -1013,7 +1014,7 @@ class Alt {
 }
 
 /**
- * SymLit: Object to represent pre in grammar rules
+ * SymLit: Object to represent literals in grammar rules
  */
 class SymLit {
   public id: string
@@ -1649,4 +1650,8 @@ function mapObject(obj: {[key: string]: any}, fun: (_: any) => any): {[key: stri
     obj2[x] = fun(obj[x])
   }
   return obj2
+}
+
+function removeQuotes(s: string): string {
+  return s.replace(/^\"(.*)\"$/, '$1')
 }

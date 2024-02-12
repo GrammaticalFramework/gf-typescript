@@ -26,3 +26,5 @@ ZeroModule.ts: Zero.js
 
 List.json: List.gf ListEng.gf
 	gf --make --output-format=json ListEng.gf
+Literal.json: Literal.gf LiteralCnc.gf
+	gf --make --output-format=json Literal.gf LiteralCnc.gf
