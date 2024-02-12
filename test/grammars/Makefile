@@ -24,7 +24,8 @@ ZeroModule.ts: Zero.js
 	} from '../../src/index'" > $@
 	sed -E 's/^var .+ = new/export default new/' $< >> $@
 
-List.json: List.gf ListEng.gf
-	gf --make --output-format=json ListEng.gf
 Literal.json: Literal.gf LiteralCnc.gf
 	gf --make --output-format=json Literal.gf LiteralCnc.gf
+
+List.json: List.gf ListEng.gf ListCnc.gf
+	gf --make --output-format=json ListEng.gf ListCnc.gf

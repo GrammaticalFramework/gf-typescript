@@ -38,6 +38,242 @@
     }
   },
   "concretes": {
+    "ListCnc": {
+      "flags": {},
+      "productions": {
+        "0": [
+          {
+            "type": "Apply",
+            "fid": 6,
+            "args": []
+          },
+          {
+            "type": "Apply",
+            "fid": 7,
+            "args": []
+          },
+          {
+            "type": "Apply",
+            "fid": 8,
+            "args": []
+          }
+        ],
+        "1": [
+          {
+            "type": "Apply",
+            "fid": 9,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 0
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 1
+              }
+            ]
+          },
+          {
+            "type": "Apply",
+            "fid": 10,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 0
+              },
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 0
+              }
+            ]
+          }
+        ],
+        "2": [
+          {
+            "type": "Apply",
+            "fid": 11,
+            "args": [
+              {
+                "type": "PArg",
+                "hypos": [],
+                "fid": 1
+              }
+            ]
+          }
+        ]
+      },
+      "functions": [
+        {
+          "name": "'lindef PN'",
+          "lins": [
+            2
+          ]
+        },
+        {
+          "name": "'lindef PN'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "'lindef SimpleList'",
+          "lins": [
+            2
+          ]
+        },
+        {
+          "name": "'lindef SimpleList'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "'lindef SimpleListNP'",
+          "lins": [
+            2
+          ]
+        },
+        {
+          "name": "'lindef SimpleListNP'",
+          "lins": [
+            0
+          ]
+        },
+        {
+          "name": "Bar",
+          "lins": [
+            3
+          ]
+        },
+        {
+          "name": "Bat",
+          "lins": [
+            4
+          ]
+        },
+        {
+          "name": "Foo",
+          "lins": [
+            5
+          ]
+        },
+        {
+          "name": "mkSimpleConsList",
+          "lins": [
+            1
+          ]
+        },
+        {
+          "name": "mkSimpleList",
+          "lins": [
+            1
+          ]
+        },
+        {
+          "name": "mkSimpleListNP",
+          "lins": [
+            0
+          ]
+        }
+      ],
+      "sequences": [
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymCat",
+            "args": [
+              0,
+              0
+            ]
+          },
+          {
+            "type": "SymKS",
+            "args": [
+              "and"
+            ]
+          },
+          {
+            "type": "SymCat",
+            "args": [
+              1,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymLit",
+            "args": [
+              0,
+              0
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "Bar"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "Bat"
+            ]
+          }
+        ],
+        [
+          {
+            "type": "SymKS",
+            "args": [
+              "Foo"
+            ]
+          }
+        ]
+      ],
+      "categories": {
+        "Float": {
+          "start": -3,
+          "end": -3
+        },
+        "Int": {
+          "start": -2,
+          "end": -2
+        },
+        "PN": {
+          "start": 0,
+          "end": 0
+        },
+        "SimpleList": {
+          "start": 1,
+          "end": 1
+        },
+        "SimpleListNP": {
+          "start": 2,
+          "end": 2
+        },
+        "String": {
+          "start": -1,
+          "end": -1
+        }
+      },
+      "totalfids": 3
+    },
     "ListEng": {
       "flags": {},
       "productions": {

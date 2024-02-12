@@ -110,6 +110,8 @@ describe('Literal', (): void => {
 
 describe('List', (): void => {
   let grammar: GFGrammar
+  // let concrete = 'ListEng'
+  let concrete = 'ListCnc'
 
   before((): void => {
     let json = JSON.parse(readFileSync('./test/grammars/List.json').toString())
@@ -123,11 +125,48 @@ describe('List', (): void => {
     should.exist(grammar.concretes.ListEng)
   })
 
+  it('linearises 1 item', (): void => {
+    let tree = new Fun('Foo')
+    let str_expected = 'Foo'
+    let str_actual = grammar.concretes[concrete].linearize(tree)
+    should.equal(str_actual, str_expected)
+  })
+
+  it('linearises 2 items', (): void => {
+    let tree = new Fun('mkSimpleListNP', new Fun('mkSimpleList', new Fun('Foo'), new Fun('Bar')))
+    let str_expected = 'Foo and Bar'
+    let str_actual = grammar.concretes[concrete].linearize(tree)
+    should.equal(str_actual, str_expected)
+  })
+
+  it('linearises 3 items', (): void => {
+    let tree = new Fun('mkSimpleListNP', new Fun('mkSimpleConsList', new Fun('Foo'), new Fun('mkSimpleList', new Fun('Bar'), new Fun('Bat'))))
+    // let str_expected = 'Foo , Bar and Bat'
+    let str_expected = 'Foo and Bar and Bat'
+    let str_actual = grammar.concretes[concrete].linearize(tree)
+    should.equal(str_actual, str_expected)
+  })
+
+  it('parses 1 item', (): void => {
+    let str = 'Foo'
+    let tree_expected = grammar.abstract.parseTree('Foo')
+    let tree_actual = grammar.concretes[concrete].parseString(str, 'PN')[0]
+    should.deepEqual(tree_actual, tree_expected)
+  })
+
+  it('parses 2 items', (): void => {
+    let str = 'Foo and Bar'
+    let tree_expected = grammar.abstract.parseTree('mkSimpleListNP (mkSimpleList Foo Bar)')
+    let tree_actual = grammar.concretes[concrete].parseString(str, 'SimpleListNP')[0]
+    should.deepEqual(tree_actual, tree_expected)
+  })
+
   it('parses 3 items', (): void => {
-    let str = 'Foo , Bar and Bat'
+    // let str = 'Foo , Bar and Bat'
+    let str = 'Foo and Bar and Bat'
     let tree_expected = grammar.abstract.parseTree('mkSimpleListNP (mkSimpleConsList Foo (mkSimpleList Bar Bat))')
-    let tree_actual = grammar.concretes.ListEng.parseString(str, 'SimpleListNP')
-    should.equal(tree_actual, tree_expected)
+    let tree_actual = grammar.concretes[concrete].parseString(str, 'SimpleListNP')[0]
+    should.deepEqual(tree_actual, tree_expected)
   })
 
 })
